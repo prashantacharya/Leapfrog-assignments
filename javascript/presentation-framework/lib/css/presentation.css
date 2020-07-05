@@ -2,3 +2,12 @@
   --main-text: #000000;
   --main-dark-text: #ffffff;
 }
+
+.slides-container {
+  position: absolute;
+  transition: 1s;
+}
+
+.slides-container > section {
+  float: left;
+}
