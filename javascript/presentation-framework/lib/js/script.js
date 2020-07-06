@@ -6,6 +6,8 @@ class Swift {
     this.slidesHeight = 0;
     this.slidesWidth = 0;
     this.selectedSlide = [0, 0];
+    this.horizontalSlides = 0;
+    this.verticalSlides = 0;
   }
 
   setSlideDimentions() {
@@ -36,6 +38,8 @@ class Swift {
         (verticalSlide) => verticalSlide.length
       );
       const maxVerticalSlides = Math.max.apply(null, verticalSlidesLengths);
+      this.horizontalSlides = maxSlides;
+      this.verticalSlides = maxVerticalSlides;
 
       this.slidesContainer.style.height =
         maxVerticalSlides * this.slidesHeight + 'px';
@@ -59,6 +63,17 @@ class Swift {
     });
   }
 
+  setKeyboardEvents() {
+    window.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowLeft') this.selectedSlide[0]--;
+      if (event.key === 'ArrowRight') this.selectedSlide[0]++;
+      if (event.key === 'ArrowUp') this.selectedSlide[1]--;
+      if (event.key === 'ArrowDown') this.selectedSlide[1]++;
+
+      this.slide();
+    });
+  }
+
   slide() {
     const [x, y] = this.selectedSlide;
     this.slidesContainer.style.left = `${x * -this.slidesWidth}px`;
@@ -68,5 +83,6 @@ class Swift {
   init() {
     this.getSlideDomElements();
     this.setDimensions();
+    this.setKeyboardEvents();
   }
 }
