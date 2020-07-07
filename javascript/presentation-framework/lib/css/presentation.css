@@ -1,13 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;400;700&display=swap');
+
 :root {
   --main-text: #000000;
   --main-dark-text: #ffffff;
+  --font: 'Nunito', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .slides-container {
   position: absolute;
-  transition: 1s;
+  transition: 0.5s all ease-in-out;
 }
 
 .slides-container > section {
   float: left;
+}
+
+.slides-container {
+  font-size: 48px;
+  font-family: var(--font);
+}
+
+.slides-container h1 {
+  font-size: 96px;
+  font-weight: normal;
+}
+
+.slides-container .slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.slide video,
+.slide img {
+  max-width: 75%;
 }

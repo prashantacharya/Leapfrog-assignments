@@ -11,16 +11,19 @@ class Swift {
   }
 
   setSlideDimentions() {
+    //* Set the width of direct decendants of .slides-container
     [...this.element.querySelectorAll('section')]
       .filter((section) => section.parentNode.className === 'slides-container')
       .forEach((element) => {
         element.style.width = this.slidesWidth + 'px';
       });
 
+    //* Set height and width of actual slide elements
+    //* including vertical slides
     this.slides.flat().forEach((element) => {
       element.style.height = this.slidesHeight + 'px';
       element.style.width = this.slidesWidth + 'px';
-      element.style.border = '1px solid black';
+      element.classList.add('slide');
     });
 
     this.element.style.position = 'relative';
@@ -65,10 +68,30 @@ class Swift {
 
   setKeyboardEvents() {
     window.addEventListener('keydown', (event) => {
-      if (event.key === 'ArrowLeft') this.selectedSlide[0]--;
-      if (event.key === 'ArrowRight') this.selectedSlide[0]++;
-      if (event.key === 'ArrowUp') this.selectedSlide[1]--;
-      if (event.key === 'ArrowDown') this.selectedSlide[1]++;
+      let [x, y] = this.selectedSlide;
+      if (event.key === 'ArrowLeft' && x > 0) {
+        this.selectedSlide = [x - 1, 0];
+      }
+
+      if (event.key === 'ArrowRight' && x < this.horizontalSlides - 1) {
+        this.selectedSlide = [x + 1, 0];
+      }
+
+      if (event.key === 'ArrowUp' && y > 0) {
+        this.selectedSlide[1]--;
+      }
+
+      if (event.key === 'ArrowDown' && y < this.slides[x].length - 1) {
+        this.selectedSlide[1]++;
+      }
+
+      if (event.key === 'f') {
+        if (document.fullscreenElement) {
+          document.exitFullscreen();
+        } else {
+          document.documentElement.requestFullscreen();
+        }
+      }
 
       this.slide();
     });
@@ -77,7 +100,7 @@ class Swift {
   slide() {
     const [x, y] = this.selectedSlide;
     this.slidesContainer.style.left = `${x * -this.slidesWidth}px`;
-    this.slidesContainer.style.top = `${y * -this.slidesWidth}px`;
+    this.slidesContainer.style.top = `${y * -this.slidesHeight}px`;
   }
 
   init() {
