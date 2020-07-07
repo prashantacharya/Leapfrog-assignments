@@ -10,6 +10,7 @@ class Swift {
     this.verticalSlides = 0;
     this.intervalRef = null;
     this.config = config;
+    this.theme = null;
   }
 
   setSlideDimentions() {
@@ -110,19 +111,44 @@ class Swift {
   }
 
   autoSlide() {
-    let autoSlideInterval = this.config.autoSlideInterval || 5;
-    let totalIntervalTime = autoSlideInterval * 1000;
+    window.addEventListener('load', () => {
+      let autoSlideInterval = this.config.autoSlideInterval || 5;
+      let totalIntervalTime = autoSlideInterval * 1000;
 
-    this.intervalRef = setInterval(() => {
-      let [x, y] = this.selectedSlide;
-      if (this.slides[x][y + 1]) {
-        this.selectedSlide = [x, y + 1];
-      } else if (this.slides[x + 1]) {
-        this.selectedSlide = [x + 1, 0];
+      this.intervalRef = setInterval(() => {
+        let [x, y] = this.selectedSlide;
+        if (this.slides[x][y + 1]) {
+          this.selectedSlide = [x, y + 1];
+        } else if (this.slides[x + 1]) {
+          this.selectedSlide = [x + 1, 0];
+        }
+
+        this.slide();
+      }, totalIntervalTime);
+    });
+  }
+
+  setTheme() {
+    this.theme = [...slide.element.classList].includes('dark') ? 'dark' : '';
+
+    this.element.insertAdjacentHTML(
+      'beforeend',
+      `<div id="switch-theme">
+        <button>☽</button>
+      </div>`
+    );
+
+    this.element.querySelector('button').addEventListener('click', (event) => {
+      if (!this.theme) {
+        this.theme = 'dark';
+        this.element.classList.add('dark');
+        event.originalTarget.innerText = '☀';
+      } else {
+        this.theme = null;
+        this.element.classList.remove('dark');
+        event.originalTarget.innerText = '☽';
       }
-
-      this.slide();
-    }, totalIntervalTime);
+    });
   }
 
   setConfigurationOptions() {
@@ -132,6 +158,10 @@ class Swift {
 
     if (this.config.slideTime) {
       this.slidesContainer.style.transition = `${this.config.slideTime}s`;
+    }
+
+    if (this.config.allowDarkTheme) {
+      this.setTheme();
     }
   }
 
