@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;400;700&display=swap');
 
 :root {
-  --main-text: #000000;
-  --main-dark-text: #ffffff;
+  --text-color: #000000;
+  --dark-text-color: #ffffff;
+  --dark-theme-bg: #000000;
   --font: 'Nunito', sans-serif;
 }
 
@@ -10,6 +11,10 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+.swift {
+  position: relative;
 }
 
 .slides-container {
@@ -24,7 +29,7 @@
 .slides-container {
   font-size: 48px;
   font-family: var(--font);
-  color: var(--main-text);
+  color: var(--text-color);
 }
 
 .slides-container h1 {
@@ -44,4 +49,45 @@
 .slide video,
 .slide img {
   max-width: 75%;
+}
+
+#switch-theme {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+}
+
+#switch-theme button {
+  padding: 5px;
+  padding-top: 2px;
+  font-size: 36px;
+  background: none;
+  color: var(--text-color);
+  border: 2px solid var(--text-color);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#switch-theme button:hover {
+  background: var(--text-color);
+  color: var(--dark-text-color);
+}
+
+.dark {
+  background: var(--dark-theme-bg);
+}
+
+.dark .slides-container {
+  color: var(--dark-text-color);
+}
+
+.dark #switch-theme button {
+  color: var(--dark-text-color);
+  border: 2px solid var(--dark-text-color);
+}
+
+.dark #switch-theme button:hover {
+  background: var(--dark-text-color);
+  color: var(--text-color);
 }

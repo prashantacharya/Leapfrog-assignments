@@ -1,8 +1,15 @@
+/**
+ * ? config options
+ * * selector - string - COMPULSORY
+ * * slideTime - number (in seconds) - Optional
+ * * autoSlide - boolean - Optional
+ * * autoSlideInterval - number (in seconds) - Optional
+ * * allowDarkTheme - boolean - Optional
+ */
+
 const slide = new Swift({
   selector: '#my-presentation',
-  slideTime: 0.5,
-  autoSlide: true,
-  autoSlideInterval: 5,
+  allowDarkTheme: true,
 });
 
 slide.init();
