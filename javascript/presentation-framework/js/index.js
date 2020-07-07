@@ -1,7 +1,8 @@
-const slide = new Swift({ selector: '#my-presentation' });
-slide.init();
+const slide = new Swift({
+  selector: '#my-presentation',
+  slideTime: 0.5,
+  autoSlide: true,
+  autoSlideInterval: 5,
+});
 
-console.log(slide.slides);
-setTimeout(() => {
-  console.log(slide.slidesHeight, slide.slidesWidth);
-}, 1000);
+slide.init();

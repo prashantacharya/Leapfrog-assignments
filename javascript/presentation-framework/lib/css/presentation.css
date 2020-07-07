@@ -24,6 +24,7 @@
 .slides-container {
   font-size: 48px;
   font-family: var(--font);
+  color: var(--main-text);
 }
 
 .slides-container h1 {
@@ -32,6 +33,7 @@
 }
 
 .slides-container .slide {
+  padding: 30px;
   display: flex;
   align-items: center;
   justify-content: center;

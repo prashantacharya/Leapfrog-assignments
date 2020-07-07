@@ -8,6 +8,8 @@ class Swift {
     this.selectedSlide = [0, 0];
     this.horizontalSlides = 0;
     this.verticalSlides = 0;
+    this.intervalRef = null;
+    this.config = config;
   }
 
   setSlideDimentions() {
@@ -71,18 +73,22 @@ class Swift {
       let [x, y] = this.selectedSlide;
       if (event.key === 'ArrowLeft' && x > 0) {
         this.selectedSlide = [x - 1, 0];
+        clearInterval(this.intervalRef);
       }
 
       if (event.key === 'ArrowRight' && x < this.horizontalSlides - 1) {
         this.selectedSlide = [x + 1, 0];
+        clearInterval(this.intervalRef);
       }
 
       if (event.key === 'ArrowUp' && y > 0) {
         this.selectedSlide[1]--;
+        clearInterval(this.intervalRef);
       }
 
       if (event.key === 'ArrowDown' && y < this.slides[x].length - 1) {
         this.selectedSlide[1]++;
+        clearInterval(this.intervalRef);
       }
 
       if (event.key === 'f') {
@@ -103,9 +109,36 @@ class Swift {
     this.slidesContainer.style.top = `${y * -this.slidesHeight}px`;
   }
 
+  autoSlide() {
+    let autoSlideInterval = this.config.autoSlideInterval || 5;
+    let totalIntervalTime = autoSlideInterval * 1000;
+
+    this.intervalRef = setInterval(() => {
+      let [x, y] = this.selectedSlide;
+      if (this.slides[x][y + 1]) {
+        this.selectedSlide = [x, y + 1];
+      } else if (this.slides[x + 1]) {
+        this.selectedSlide = [x + 1, 0];
+      }
+
+      this.slide();
+    }, totalIntervalTime);
+  }
+
+  setConfigurationOptions() {
+    if (this.config.autoSlide) {
+      this.autoSlide();
+    }
+
+    if (this.config.slideTime) {
+      this.slidesContainer.style.transition = `${this.config.slideTime}s`;
+    }
+  }
+
   init() {
     this.getSlideDomElements();
     this.setDimensions();
     this.setKeyboardEvents();
+    this.setConfigurationOptions();
   }
 }
