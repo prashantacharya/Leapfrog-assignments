@@ -134,4 +134,12 @@ const data = [
     liveDemo: 'javascript/helix-animation',
     type: 'js-square',
   },
+  {
+    id: 18,
+    title: 'Presentation Framework - Final Project',
+    sourceCode:
+      'https://github.com/prashantacharya/Leapfrog-assignments/tree/master/javascript/presentation-framework',
+    liveDemo: 'javascript/presentation-framework',
+    type: 'js-square',
+  },
 ];
