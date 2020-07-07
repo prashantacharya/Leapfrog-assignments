@@ -128,6 +128,18 @@ class Swift {
     });
   }
 
+  switchTheme() {
+    if (!this.theme) {
+      this.theme = 'dark';
+      this.element.classList.add('dark');
+      this.element.querySelector('#switch-theme button').innerText = '☀';
+    } else {
+      this.theme = null;
+      this.element.classList.remove('dark');
+      this.element.querySelector('#switch-theme button').innerText = '☽';
+    }
+  }
+
   setTheme() {
     this.theme = [...slide.element.classList].includes('dark') ? 'dark' : '';
 
@@ -138,16 +150,12 @@ class Swift {
       </div>`
     );
 
-    this.element.querySelector('button').addEventListener('click', (event) => {
-      if (!this.theme) {
-        this.theme = 'dark';
-        this.element.classList.add('dark');
-        event.originalTarget.innerText = '☀';
-      } else {
-        this.theme = null;
-        this.element.classList.remove('dark');
-        event.originalTarget.innerText = '☽';
-      }
+    this.element.querySelector('button').addEventListener('click', () => {
+      this.switchTheme();
+    });
+
+    window.addEventListener('keydown', (event) => {
+      if (event.key === 't') this.switchTheme();
     });
   }
 
