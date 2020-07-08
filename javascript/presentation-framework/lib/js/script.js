@@ -108,6 +108,8 @@ class Swift {
     const [x, y] = this.selectedSlide;
     this.slidesContainer.style.left = `${x * -this.slidesWidth}px`;
     this.slidesContainer.style.top = `${y * -this.slidesHeight}px`;
+
+    if (this.config.slideNumbers) this.updateSlideNumber();
   }
 
   autoSlide() {
@@ -159,6 +161,27 @@ class Swift {
     });
   }
 
+  showSlideNumbers() {
+    this.element.insertAdjacentHTML(
+      'beforeend',
+      `<div class="slide-number">
+        1
+      </div>`
+    );
+  }
+
+  updateSlideNumber() {
+    const [x, y] = this.selectedSlide;
+    let pageNo = '';
+    if (this.slides[x].length > 1) {
+      pageNo = `${x + 1}.${y + 1}`;
+    } else {
+      pageNo = `${x + 1}`;
+    }
+
+    this.element.querySelector('.slide-number').innerText = pageNo;
+  }
+
   setConfigurationOptions() {
     if (this.config.autoSlide) {
       this.autoSlide();
@@ -170,6 +193,10 @@ class Swift {
 
     if (this.config.allowDarkTheme) {
       this.setTheme();
+    }
+
+    if (this.config.slideNumbers) {
+      this.showSlideNumbers();
     }
   }
 

@@ -46,6 +46,13 @@
   overflow: hidden;
 }
 
+.slide-number {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 30px;
+}
+
 .slide video,
 .slide img {
   max-width: 75%;
@@ -90,4 +97,8 @@
 .dark #switch-theme button:hover {
   background: var(--dark-text-color);
   color: var(--text-color);
+}
+
+.dark .slide-number {
+  color: var(--dark-text-color);
 }
