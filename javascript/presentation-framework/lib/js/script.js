@@ -107,6 +107,61 @@ class Swift {
     });
   }
 
+  setSwipeEvents() {
+    let xDown = null;
+    let yDown = null;
+
+    this.element.addEventListener(
+      'touchstart',
+      (event) => {
+        xDown = event.touches[0].clientX;
+        yDown = event.touches[0].clientY;
+      },
+      false
+    );
+
+    this.element.addEventListener(
+      'touchmove',
+      (event) => {
+        let [x, y] = this.selectedSlide;
+
+        if (!xDown || !yDown) {
+          return;
+        }
+
+        let xUp = event.touches[0].clientX;
+        let yUp = event.touches[0].clientY;
+
+        let xDiff = xDown - xUp;
+        let yDiff = yDown - yUp;
+
+        if (Math.abs(xDiff) > Math.abs(yDiff)) {
+          if (xDiff > 0 && x < this.horizontalSlides - 1) {
+            this.selectedSlide = [x + 1, 0];
+            clearInterval(this.intervalRef);
+          } else if (x > 0) {
+            this.selectedSlide = [x - 1, 0];
+            clearInterval(this.intervalRef);
+          }
+        } else {
+          if (yDiff > 0 && y < this.slides[x].length - 1) {
+            this.selectedSlide[1]++;
+            clearInterval(this.intervalRef);
+          } else if (y > 0) {
+            this.selectedSlide[1]--;
+            clearInterval(this.intervalRef);
+          }
+        }
+        /* reset values */
+        xDown = null;
+        yDown = null;
+
+        this.slide();
+      },
+      false
+    );
+  }
+
   slide() {
     const [x, y] = this.selectedSlide;
     this.slidesContainer.style.left = `${x * -this.slidesWidth}px`;
@@ -242,6 +297,7 @@ class Swift {
     this.getSlideDomElements();
     this.setDimensions();
     this.setKeyboardEvents();
+    this.setSwipeEvents();
     this.setConfigurationOptions();
   }
 }
