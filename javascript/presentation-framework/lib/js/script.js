@@ -11,6 +11,7 @@ class Swift {
     this.intervalRef = null;
     this.config = config;
     this.theme = null;
+    this.zoomedOut = false;
   }
 
   setSlideDimentions() {
@@ -71,6 +72,8 @@ class Swift {
 
   setKeyboardEvents() {
     window.addEventListener('keydown', (event) => {
+      if (this.zoomOut) return;
+
       let [x, y] = this.selectedSlide;
       if (event.key === 'ArrowLeft' && x > 0) {
         this.selectedSlide = [x - 1, 0];
@@ -157,7 +160,7 @@ class Swift {
     });
 
     window.addEventListener('keydown', (event) => {
-      if (event.key === 't') this.switchTheme();
+      if (event.key.toLowerCase() === 't') this.switchTheme();
     });
   }
 
@@ -182,6 +185,37 @@ class Swift {
     this.element.querySelector('.slide-number').innerText = pageNo;
   }
 
+  zoomOut() {
+    this.element.insertAdjacentHTML(
+      'beforeend',
+      `<div class="zoom-out-view"></div>`
+    );
+    this.element.querySelector(
+      '.zoom-out-view'
+    ).innerHTML = this.slidesContainer.innerHTML;
+
+    let zoomOutElement = this.element.querySelector('.zoom-out-view');
+
+    window.addEventListener('keydown', (event) => {
+      let display = window.getComputedStyle(zoomOutElement).display;
+
+      if (event.key.toLowerCase() === 'z') {
+        if (display === 'none') {
+          zoomOutElement.style.display = 'block';
+          this.zoomOut = true;
+        } else {
+          zoomOutElement.style.display = 'none';
+          this.zoomOut = false;
+        }
+      }
+    });
+
+    zoomOutElement.addEventListener('click', () => {
+      zoomOutElement.style.display = 'none';
+      this.zoomOut = false;
+    });
+  }
+
   setConfigurationOptions() {
     if (this.config.autoSlide) {
       this.autoSlide();
@@ -201,6 +235,10 @@ class Swift {
   }
 
   init() {
+    if (this.config.zoomedOutView) {
+      this.zoomOut();
+    }
+
     this.getSlideDomElements();
     this.setDimensions();
     this.setKeyboardEvents();
