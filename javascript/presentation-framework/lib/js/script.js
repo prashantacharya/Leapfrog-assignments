@@ -1,7 +1,8 @@
 class Swift {
   constructor(config) {
     this.element = document.querySelector(config.selector);
-    this.slidesContainer = this.element.querySelector('.slides-container');
+    this.slidesContainer =
+      this.element.querySelector('.slides-container') || null;
     this.slides = [];
     this.slidesHeight = 0;
     this.slidesWidth = 0;
@@ -289,7 +290,52 @@ class Swift {
     }
   }
 
+  getEachSection(data) {
+    return `
+      <section>
+        <h1>${data.title}</h1>
+        <p>${data.content}</p>
+      </section>
+    `;
+  }
+
+  insertDataToDOM() {
+    this.element.insertAdjacentHTML(
+      'afterbegin',
+      '<div class="slides-container"></div>'
+    );
+
+    this.slidesContainer = this.element.querySelector('.slides-container');
+    let domElement = '';
+
+    this.config.data.forEach((slide) => {
+      let section = '';
+      if (slide.length) {
+        let verticalSlideDOM = '';
+        slide.forEach((verticalSlide) => {
+          verticalSlideDOM += this.getEachSection(verticalSlide);
+        });
+
+        section += `
+          <section>
+            ${verticalSlideDOM}
+          </section>
+        `;
+      } else {
+        section += this.getEachSection(slide);
+      }
+
+      domElement += section;
+    });
+
+    this.slidesContainer.innerHTML = domElement;
+  }
+
   init() {
+    if (this.config.data) {
+      this.insertDataToDOM();
+    }
+
     if (this.config.zoomedOutView) {
       this.zoomOut();
     }
