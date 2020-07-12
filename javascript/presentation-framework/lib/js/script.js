@@ -1,7 +1,8 @@
 class Swift {
   constructor(config) {
     this.element = document.querySelector(config.selector);
-    this.slidesContainer = this.element.querySelector('.slides-container');
+    this.slidesContainer =
+      this.element.querySelector('.slides-container') || null;
     this.slides = [];
     this.slidesHeight = 0;
     this.slidesWidth = 0;
@@ -72,7 +73,7 @@ class Swift {
 
   setKeyboardEvents() {
     window.addEventListener('keydown', (event) => {
-      if (this.zoomOut) return;
+      if (this.zoomedOut) return;
 
       let [x, y] = this.selectedSlide;
       if (event.key === 'ArrowLeft' && x > 0) {
@@ -257,10 +258,10 @@ class Swift {
       if (event.key.toLowerCase() === 'z') {
         if (display === 'none') {
           zoomOutElement.style.display = 'block';
-          this.zoomOut = true;
+          this.zoomedOut = true;
         } else {
           zoomOutElement.style.display = 'none';
-          this.zoomOut = false;
+          this.zoomedOut = false;
         }
       }
     });
@@ -289,10 +290,73 @@ class Swift {
     }
   }
 
+  getEachSection(data) {
+    if (data.markdown) {
+      return `
+        <section class='markdown'>
+          ${data.markdown}
+        </section>
+      `;
+    }
+
+    return `
+      <section>
+        <h1>${data.title}</h1>
+        <p>${data.content}</p>
+      </section>
+    `;
+  }
+
+  insertDataToDOM() {
+    this.element.insertAdjacentHTML(
+      'afterbegin',
+      '<div class="slides-container"></div>'
+    );
+
+    this.slidesContainer = this.element.querySelector('.slides-container');
+    let domElement = '';
+
+    this.config.data.forEach((slide) => {
+      let section = '';
+      if (slide.length) {
+        let verticalSlideDOM = '';
+        slide.forEach((verticalSlide) => {
+          verticalSlideDOM += this.getEachSection(verticalSlide);
+        });
+
+        section += `
+          <section>
+            ${verticalSlideDOM}
+          </section>
+        `;
+      } else {
+        section += this.getEachSection(slide);
+      }
+
+      domElement += section;
+    });
+
+    this.slidesContainer.innerHTML = domElement;
+  }
+
+  convertMarkdown() {
+    const markdownSections = this.element.querySelectorAll('.markdown');
+    markdownSections.forEach((section) => {
+      const text = section.innerHTML;
+      section.innerHTML = parseMarkdown(text);
+    });
+  }
+
   init() {
+    if (this.config.data) {
+      this.insertDataToDOM();
+    }
+
     if (this.config.zoomedOutView) {
       this.zoomOut();
     }
+
+    this.convertMarkdown();
 
     this.getSlideDomElements();
     this.setDimensions();
@@ -300,4 +364,24 @@ class Swift {
     this.setSwipeEvents();
     this.setConfigurationOptions();
   }
+}
+
+function parseMarkdown(text) {
+  const trimmedText = text
+    .split('\n')
+    .map((str) => str.trim())
+    .join('\n');
+
+  const html = trimmedText
+    .replace(/^###(.*$)/gim, '<h3>$1</h3>')
+    .replace(/^##(.*$)/gim, '<h2>$1</h2>')
+    .replace(/^#(.*$)/gim, '<h1>$1</h1>')
+    .replace(/^\> (.*$)/gim, '<blockquote>$1</blockquote>')
+    .replace(/\*\*(.*)\*\*/gim, '<b>$1</b>')
+    .replace(/\*(.*)\*/gim, '<i>$1</i>')
+    .replace(/!\[(.*?)\]\((.*?)\)/gim, "<img alt='$1' src='$2' />")
+    .replace(/\[(.*?)\]\((.*?)\)/gim, "<a href='$2' target='_blank'>$1</a>")
+    .replace(/\s\n$/gim, '<br />');
+
+  return html;
 }
