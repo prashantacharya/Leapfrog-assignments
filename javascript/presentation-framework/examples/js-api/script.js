@@ -1,16 +1,24 @@
 const data = [
   {
-    title: 'Slide 1',
-    content: 'This is the content for my first slide',
+    markdown: `
+      # JS Based API
+      You can use JS based API with Markdown too 😁
+    `,
   },
   [
     {
-      title: 'Slide 2.1',
-      content: 'This is the content for my 2.1 slide',
+      markdown: `
+        # This is how you define the data object
+
+        ![JS API](images/js-api1.png)
+      `,
     },
     {
-      title: 'Slide 2.2',
-      content: 'This is the content for my 2.2 slide',
+      markdown: `
+        # This is how you initialize the slides
+
+        ![JS API](images/js-api2.png)
+      `,
     },
   ],
 ];
