@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gafata&family=Quicksand&display=swap');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
 
 :root {
@@ -6,7 +6,8 @@
   --dark-text-color: #ffffff;
   --dark-theme-bg: #000000;
   --light-theme-bg: #ffffff;
-  --font: 'Nunito', sans-serif;
+  --font: 'Quicksand', sans-serif;
+  --heading-font: 'Gafata', sans-serif;
 }
 
 * {
@@ -19,15 +20,50 @@
   position: relative;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font: var(--heading-font);
+}
+
+.slides-container h1,
+.slides-container h2 {
+  margin-bottom: 20px;
+}
+
 .slides-container {
   position: absolute;
   left: 0;
   top: 0;
   z-index: 1;
   transition: 0.5s all ease-in-out;
-  font-size: 48px;
+  font-size: 36px;
   font-family: var(--font);
   color: var(--text-color);
+}
+
+.slides-container a {
+  text-decoration: none;
+  color: cadetblue;
+  transition: 0.3s;
+}
+
+.slides-container a:hover {
+  border-bottom: 1px solid cadetblue;
+}
+
+.slides-container li {
+  list-style-type: '→ ';
+  margin-bottom: 10px;
+}
+
+.slides-container p {
+  margin: 20px 0px;
+  width: 75%;
+  text-align: center;
 }
 
 .slides-container > section {
@@ -35,7 +71,7 @@
 }
 
 .slides-container h1 {
-  font-size: 96px;
+  font-size: 72px;
   font-weight: normal;
 }
 
