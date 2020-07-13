@@ -193,11 +193,13 @@ class Swift {
     if (!this.theme) {
       this.theme = 'dark';
       this.element.classList.add('dark');
-      this.element.querySelector('#switch-theme button').innerText = '☀';
+      this.element.querySelector('#switch-theme button').innerHTML =
+        '<i class="fa fa-sun-o"></i>';
     } else {
       this.theme = null;
       this.element.classList.remove('dark');
-      this.element.querySelector('#switch-theme button').innerText = '☽';
+      this.element.querySelector('#switch-theme button').innerHTML =
+        '<i class="fa fa-moon-o"></i>';
     }
   }
 
@@ -207,7 +209,7 @@ class Swift {
     this.element.insertAdjacentHTML(
       'beforeend',
       `<div id="switch-theme">
-        <button>☽</button>
+        <button><i class="fa fa-moon-o"></i></button>
       </div>`
     );
 
