@@ -11,7 +11,7 @@
   <body>
     <div id="my-presentation" class="swift">
       <div class="slides-container">
-        <section>
+        <section class="title">
           <h1>A new presentation framework</h1>
         </section>
 
@@ -23,11 +23,12 @@
             <li>HTML Based API</li>
             <li>JS Based API</li>
             <li>Side Numbers</li>
-            <li>Zoom Out View (press <kbd>ctrl + z</kbd>)</li>
+            <li>Zoom Out View (press <kbd>z</kbd>)</li>
             <li>A lot of configuration options</li>
           </ul>
         </section>
-        <section>
+
+        <section class="tutorial">
           <section>
             <h1>How to use it?</h1>
           </section>
@@ -64,6 +65,135 @@
             <img src="assets/images/js-init.png" alt="JS Code" />
 
             <p>Go right for exploring customization options</p>
+          </section>
+        </section>
+
+        <section class="customization">
+          <section>
+            <h1>Customization Options</h1>
+          </section>
+
+          <section>
+            <h1>You can customize the slides with CSS as you want</h1>
+            <p>That means, as a developer you have full control</p>
+
+            <img
+              src="assets/images/customize-css.png"
+              alt="CSS Customization"
+            />
+          </section>
+
+          <section>
+            <h1>You can also change the slide behavior</h1>
+            <p>
+              Slides' behavior can be modified by changing the config object
+              passed while initializing the slide object
+            </p>
+          </section>
+
+          <section>
+            <h1>
+              Modify slide transition time, auto-slide and hold times
+            </h1>
+            <p>All of these options are optional</p>
+
+            <ul>
+              <li>
+                <code>slideTime</code> - number (in seconds) - default = 0.5
+                (seconds)
+              </li>
+              <li><code>autoSlide</code> - boolean - default = false</li>
+              <li>
+                <code>autoSlideInterval</code> - number (in seconds) - default =
+                5 (seconds)
+              </li>
+            </ul>
+
+            <img
+              src="assets/images/configure-slide-timing.png"
+              alt="Configure timing related options"
+            />
+          </section>
+
+          <section>
+            <h1>Switch themes</h1>
+            <p>
+              You can switch between a dark theme or a light theme
+            </p>
+            <p>
+              For that, you need to enable a setting. After doing that you can
+              press <kbd>t</kbd> on keyboard or click a button on the top right
+              corner and switch between the 2 themes.
+            </p>
+
+            <img src="assets/images/themes.png" alt="Switch between themes" />
+          </section>
+
+          <section>
+            <h1>Slide Numbers</h1>
+            <p>
+              You can display slide numbers too by passing slideNumber value as
+              true on config object.
+            </p>
+
+            <img src="assets/images/slide-number.png" alt="Slide Number" />
+          </section>
+
+          <section>
+            <h1>Zoom out view</h1>
+            <p>
+              You can enable zoom out view by passing zoomedOutView as true to
+              config object
+            </p>
+
+            <img
+              src="assets/images/zoomed-out-view.png"
+              alt="Enable Zoomed out view"
+            />
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h1>Theme Customization</h1>
+            <p>
+              By default, Swift.JS comes with a default light theme and a dark
+              theme. However, you can modify how it looks by modifying some CSS
+              variables.
+            </p>
+
+            <img
+              src="assets/images/theme-customization.png"
+              alt="Customizing themes"
+            />
+
+            <p>The variable names are self explanatory</p>
+          </section>
+
+          <section>
+            <h1>Modifying some specific styling</h1>
+            <p>
+              <span class="red-text">Don't</span>
+              <span class="blue-text">do</span>
+              <span class="green-text">this</span><br />
+              <span>but you can</span>
+            </p>
+          </section>
+
+          <section>
+            <h1>To apply specific styling</h1>
+
+            <p>First define the markup</p>
+            <img
+              src="assets/images/customizing-section-html.png"
+              alt="Customizing individual sections"
+            />
+
+            <p>Then define the CSS</p>
+            <img
+              src="assets/images/modifying-sections.png"
+              alt="Customizing sections CSS"
+            />
           </section>
         </section>
 
