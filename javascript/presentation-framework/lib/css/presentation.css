@@ -10,6 +10,10 @@
   --heading-font: 'Gafata', sans-serif;
 }
 
+html {
+  font-size: 16px;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -40,7 +44,7 @@ h6 {
   top: 0;
   z-index: 1;
   transition: 0.5s all ease-in-out;
-  font-size: 36px;
+  font-size: 2rem;
   font-family: var(--font);
   color: var(--text-color);
 }
@@ -71,7 +75,7 @@ h6 {
 }
 
 .slides-container h1 {
-  font-size: 72px;
+  font-size: 3rem;
   font-weight: normal;
 }
 
@@ -97,6 +101,63 @@ h6 {
   max-width: 75%;
 }
 
+.indicator-container {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 3;
+}
+
+.indicators {
+  position: relative;
+  height: 146px;
+  width: 130px;
+  margin: 0;
+  padding: 0;
+  opacity: 0.5;
+}
+
+.indicators button {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  padding: 0px;
+  color: var(--text-color);
+}
+
+.indicators .left,
+.indicators .right,
+.indicators .up,
+.indicators .down {
+  display: none;
+}
+
+.indicators button {
+  position: absolute;
+}
+
+.indicators .up {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.indicators .down {
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+}
+
+.indicators .left {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.indicators .right {
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+}
+
 #switch-theme {
   position: absolute;
   z-index: 3;
@@ -106,7 +167,7 @@ h6 {
 
 #switch-theme button {
   padding: 5px;
-  font-size: 24px;
+  font-size: 1.5rem;
   background: none;
   color: var(--text-color);
   border: 2px solid var(--text-color);
@@ -143,6 +204,10 @@ h6 {
   font-family: var(--font);
 }
 
+.dark .indicators button {
+  color: var(--dark-text-color);
+}
+
 .zoom-out-view {
   position: absolute;
   height: 100%;
@@ -166,7 +231,7 @@ h6 {
   float: left;
   width: 400px;
   height: 400px;
-  font-size: 18px;
+  font-size: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -190,4 +255,10 @@ h6 {
 
 .dark .zoom-out-view section section:not(:last-child) {
   border-bottom: 1px solid #5a5555;
+}
+
+@media (max-width: 768px) {
+  .indicators {
+    display: none;
+  }
 }
