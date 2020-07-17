@@ -169,6 +169,7 @@ class Swift {
     this.slidesContainer.style.top = `${y * -this.slidesHeight}px`;
 
     if (this.config.slideNumbers) this.updateSlideNumber();
+    this.insertIndicators();
   }
 
   autoSlide() {
@@ -343,10 +344,55 @@ class Swift {
 
   convertMarkdown() {
     const markdownSections = this.element.querySelectorAll('.markdown');
-    markdownSections.forEach((section) => {
-      const text = section.innerHTML;
-      section.innerHTML = parseMarkdown(text);
-    });
+    if (markdownSections) {
+      markdownSections.forEach((section) => {
+        const text = section.innerHTML;
+        section.innerHTML = parseMarkdown(text);
+      });
+    }
+  }
+
+  insertIndicators() {
+    this.element.insertAdjacentHTML(
+      'beforeend',
+      `
+      <div class="indicator-container">
+        <div class="indicators">
+          <button class="up">
+            <i class="fa fa-chevron-up"></i>
+          </button>
+          <button class="down">
+            <i class="fa fa-chevron-down"></i>
+          </button>
+          <button class="left">
+            <i class="fa fa-chevron-left"></i>
+          </button>
+          <button class="right">
+            <i class="fa fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>`
+    );
+
+    if (this.zoomedOut) return;
+    const [x, y] = this.selectedSlide;
+
+    if (x !== 0)
+      this.element.querySelector('.indicators .left').style.display = 'block';
+    else this.element.querySelector('.indicators .left').style.display = 'none';
+
+    if (x < this.slides.length - 1)
+      this.element.querySelector('.indicators .right').style.display = 'block';
+    else
+      this.element.querySelector('.indicators .right').style.display = 'none';
+
+    if (y !== 0)
+      this.element.querySelector('.indicators .up').style.display = 'block';
+    else this.element.querySelector('.indicators .up').style.display = 'none';
+
+    if (y < this.slides[x].length - 1)
+      this.element.querySelector('.indicators .down').style.display = 'block';
+    else this.element.querySelector('.indicators .down').style.display = 'none';
   }
 
   init() {
@@ -365,25 +411,6 @@ class Swift {
     this.setKeyboardEvents();
     this.setSwipeEvents();
     this.setConfigurationOptions();
+    this.insertIndicators();
   }
-}
-
-function parseMarkdown(text) {
-  const trimmedText = text
-    .split('\n')
-    .map((str) => str.trim())
-    .join('\n');
-
-  const html = trimmedText
-    .replace(/^###(.*$)/gim, '<h3>$1</h3>')
-    .replace(/^##(.*$)/gim, '<h2>$1</h2>')
-    .replace(/^#(.*$)/gim, '<h1>$1</h1>')
-    .replace(/^\> (.*$)/gim, '<blockquote>$1</blockquote>')
-    .replace(/\*\*(.*)\*\*/gim, '<b>$1</b>')
-    .replace(/\*(.*)\*/gim, '<i>$1</i>')
-    .replace(/!\[(.*?)\]\((.*?)\)/gim, "<img alt='$1' src='$2' />")
-    .replace(/\[(.*?)\]\((.*?)\)/gim, "<a href='$2' target='_blank'>$1</a>")
-    .replace(/\s\n$/gim, '<br />');
-
-  return html;
 }
