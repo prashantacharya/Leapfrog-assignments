@@ -12,7 +12,7 @@
     <div id="my-presentation" class="swift">
       <div class="slides-container">
         <section class="title">
-          <h1>A new presentation framework</h1>
+          <h1>Presentation framework for developers</h1>
         </section>
 
         <section>
@@ -198,17 +198,91 @@
         </section>
 
         <section>
-          <h1>Examples</h1>
-          <ul>
-            <li>
-              <a href="examples/js-api/" target="_blank">JS Based API</a>
-            </li>
-            <li>
-              <a href="examples/markdown/" target="_blank"
-                >Markdown Based API</a
-              >
-            </li>
-          </ul>
+          <section>
+            <h1>JavaScript Based API 🔥</h1>
+            <p>
+              With the use of this, you can define entire slides with JS
+            </p>
+          </section>
+          <section>
+            <h1>Including library</h1>
+            <p>This step is the same as other steps defined on slide 3.2</p>
+
+            <img src="assets/images/setup.png" alt="Setup" />
+          </section>
+          <section>
+            <h1>Let's define the data</h1>
+            <img
+              src="assets/images/js-api1.png"
+              alt="Adding data for slide object"
+            />
+          </section>
+          <section>
+            <h1>Now we have to initialize the slide and pass data object</h1>
+            <img
+              src="assets/images/js-api2.png"
+              alt="Initializing the slide object"
+            />
+            <p>Notice <code>data</code> property on config object?</p>
+          </section>
+          <section>
+            <h1>Some pointers</h1>
+            <ul>
+              <li>
+                You can use markdown with the JS API (See the first element of
+                the data object)
+              </li>
+              <li>
+                If you have just a single horizontal slide, you add the object
+                itself
+              </li>
+              <li>
+                If you have vertical slides, you have to create an array of
+                objects
+              </li>
+              <li>
+                You can use heading, content and markdown properties only.
+              </li>
+            </ul>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h1>Markdown 💣</h1>
+            <p>
+              Markdown is like a markup language which can be compiled into HTML
+            </p>
+          </section>
+          <section>
+            <h1>Adding markdown support</h1>
+            <p>Adding markdown support is easy</p>
+            <p>
+              In the sections you plan to use markdown, add a class
+              <code>markdown</code> on the section.
+            </p>
+
+            <img src="assets/images/markdown.png" alt="Markdown Based API" />
+          </section>
+          <section>
+            <h1>Some pointers</h1>
+            <ul>
+              <li>You can use markdown with JS based API</li>
+              <li>
+                Be careful about code formatters, <br />
+                They can change formatting in your HTML document and cause
+                chaos.
+              </li>
+              <li>
+                It just supports headings, paragraph, bold text, italic text,
+                link and images now. So advanced MD should not be used.
+              </li>
+            </ul>
+          </section>
+        </section>
+
+        <section>
+          <h1>Thank you</h1>
         </section>
       </div>
     </div>
