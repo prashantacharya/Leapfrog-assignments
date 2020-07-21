@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
+body {
+  font-family: 'Lato', sans-serif;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -80,4 +86,64 @@
 
 .login__button-container button:hover {
   box-shadow: 0px 2px 5px rgb(121, 121, 121);
+}
+
+/*
+  * Card Design
+*/
+
+.card {
+  margin: 20px 0px;
+  width: 660px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.card__example-image {
+  width: 320px;
+}
+
+.card__example-image img {
+  width: 100%;
+}
+
+.card__design {
+  width: 320px;
+}
+
+.card__image img {
+  width: 100%;
+}
+
+.card__content {
+  padding: 15px;
+}
+
+.card__tag {
+  font-weight: 700;
+  font-size: 14px;
+  color: #ffb542;
+}
+
+.card__tag i {
+  font-size: 13px;
+  margin-right: 2px;
+}
+
+.card__heading {
+  margin: 10px 0;
+}
+
+.card__heading h2 {
+  font-size: 18px;
+  font-weight: normal;
+  color: #5e5e5e;
+}
+
+.card__text {
+  margin: 5px 0px;
+  color: gray;
+  font-size: 18px;
+  font-weight: 200;
+  line-height: 140%;
 }
