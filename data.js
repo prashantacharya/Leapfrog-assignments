@@ -142,4 +142,16 @@ const data = [
     liveDemo: 'javascript/presentation-framework',
     type: 'js-square',
   },
+  {
+    id: 19,
+    title: 'UI Elements with BEM convention',
+    sourceCode:
+      'https://github.com/prashantacharya/Leapfrog-assignments/tree/master/design/advanced-design-BEM',
+    liveDemo: 'design/advanced-design-BEM',
+    type: 'css3',
+  },
 ];
+
+// sass
+// react
+// node
