@@ -48,10 +48,10 @@ body {
   color: #ffffff;
   background-color: #fa7347;
   width: 280px;
-  margin: 20px;
+  margin: 10px 20px;
   display: flex;
-  padding: 10px;
-  border-radius: 20px;
+  padding: 15px;
+  border-radius: 30px;
 }
 
 .login__icon {
@@ -82,6 +82,8 @@ body {
   color: #f96332;
   cursor: pointer;
   transition: 0.5s;
+  font-size: 16px;
+  font-weight: 350;
 }
 
 .login__button-container button:hover {
@@ -146,4 +148,36 @@ body {
   font-size: 18px;
   font-weight: 200;
   line-height: 140%;
+}
+
+/* 
+  * Buttons
+*/
+
+.button-group button {
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.button-group button i {
+  margin-right: 2px;
+}
+
+.button-group .twitter {
+  background-color: #1da1f2;
+}
+
+.button-group .facebook {
+  background-color: #4267b2;
+}
+
+.button-group .dribbble {
+  background-color: #ea4c89;
+}
+
+.button-group .google-plus {
+  background-color: #db4a39;
 }
