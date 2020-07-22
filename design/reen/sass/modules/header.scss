@@ -1,0 +1,47 @@
+.header {
+  text-align: center;
+  color: $white;
+  background-image: url('../../images/header.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 500px;
+  position: relative;
+
+  h1 {
+    text-transform: uppercase;
+    font-size: 36px;
+
+    @include mq(sm) {
+      font-size: 48px;
+    }
+
+    @include mq(lg) {
+      font-size: 78px;
+    }
+  }
+
+  @include e(content) {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  @include e(sub-header) {
+    margin-top: 36px;
+    color: #e5e9ed;
+    font-size: 16px;
+
+    @include mq(sm) {
+      font-size: 24px;
+    }
+  }
+
+  @include mq(sm) {
+    height: 600px;
+  }
+
+  @include mq(lg) {
+    height: 880px;
+  }
+}

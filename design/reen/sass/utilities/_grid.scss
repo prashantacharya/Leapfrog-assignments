@@ -2,6 +2,7 @@ $grid-type: 'float';
 
 .container {
   max-width: 1161px + 15px * 2;
+  margin: 0 auto;
   padding: 10px;
   @include mq(sm) {
     padding: 15px;

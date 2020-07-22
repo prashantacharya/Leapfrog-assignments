@@ -150,6 +150,14 @@ const data = [
     liveDemo: 'design/advanced-design-BEM',
     type: 'css3',
   },
+  {
+    id: 20,
+    title: 'Reen: SCSS project',
+    sourceCode:
+      'https://github.com/prashantacharya/Leapfrog-assignments/tree/master/design/reen',
+    liveDemo: 'design/reen/dist',
+    type: 'sass',
+  },
 ];
 
 // sass
