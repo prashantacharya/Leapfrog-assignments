@@ -1,0 +1,25 @@
+.header-nav {
+  background-color: #f5f7f9;
+  border-bottom: 2px solid #e5e9ed;
+
+  @include e(contact) {
+    li:first-child {
+      margin-bottom: 5px;
+    }
+
+    i {
+      margin-right: 8px;
+    }
+
+    @include mq(sm) {
+      li:first-child {
+        margin-bottom: 0px;
+        margin-right: 24px;
+      }
+
+      li {
+        float: left;
+      }
+    }
+  }
+}
