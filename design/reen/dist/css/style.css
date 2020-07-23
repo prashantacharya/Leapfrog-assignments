@@ -606,12 +606,47 @@ option {
     @media (min-width: 576px) {
       .header__sub-header {
         font-size: 24px; } }
+  .header__btn {
+    font-weight: 700;
+    font-size: 22px;
+    margin-top: 20px;
+    border: none;
+    background-color: #00bb9b;
+    color: #fff;
+    padding: 15px;
+    cursor: pointer; }
+    @media (min-width: 576px) {
+      .header__btn {
+        margin-top: 60px;
+        padding: 23px 70px; } }
   @media (min-width: 576px) {
     .header {
       height: 600px; } }
   @media (min-width: 992px) {
     .header {
       height: 880px; } }
+
+.about {
+  text-align: center;
+  padding: 25px 0px; }
+  .about h2 {
+    font-size: 44px; }
+  .about__heading {
+    max-width: 790px;
+    margin: 0 auto; }
+  .about__sub-heading {
+    margin-top: 44px;
+    line-height: 30px; }
+    @media (min-width: 576px) {
+      .about__sub-heading {
+        font-size: 22px;
+        line-height: 40px; } }
+  @media (min-width: 576px) {
+    .about {
+      padding: 50px 0px; } }
+  @media (min-width: 992px) {
+    .about {
+      padding: 115px 0px; } }
 
 @media (min-width: 576px) {
   .is-collapsed-mobile {
