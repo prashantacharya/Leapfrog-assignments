@@ -8,3 +8,18 @@ $grid-type: 'float';
     padding: 15px;
   }
 }
+
+.row:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.col-3 {
+  width: 100%;
+
+  @include mq(md) {
+    width: 33.33%;
+    float: left;
+  }
+}
