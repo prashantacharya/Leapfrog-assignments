@@ -1,0 +1,31 @@
+.about {
+  text-align: center;
+  padding: 25px 0px;
+
+  h2 {
+    font-size: 44px;
+  }
+
+  @include e(heading) {
+    max-width: 790px;
+    margin: 0 auto;
+  }
+
+  @include e(sub-heading) {
+    margin-top: 44px;
+    line-height: 30px;
+
+    @include mq(sm) {
+      font-size: 22px;
+      line-height: 40px;
+    }
+  }
+
+  @include mq(sm) {
+    padding: 50px 0px;
+  }
+
+  @include mq(lg) {
+    padding: 115px 0px;
+  }
+}

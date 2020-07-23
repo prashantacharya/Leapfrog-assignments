@@ -37,6 +37,22 @@
     }
   }
 
+  @include e(btn) {
+    font-weight: 700;
+    font-size: 22px;
+    margin-top: 20px;
+    border: none;
+    background-color: $caribbean-green;
+    color: $primary-color;
+    padding: 15px;
+    cursor: pointer;
+
+    @include mq(sm) {
+      margin-top: 60px;
+      padding: 23px 70px;
+    }
+  }
+
   @include mq(sm) {
     height: 600px;
   }
