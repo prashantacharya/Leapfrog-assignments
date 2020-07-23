@@ -38,6 +38,10 @@ a {
   color: $color-link;
   text-decoration: none;
   transition: color 0.2s;
+
+  &:hover {
+    color: darken($color: $color-link, $amount: 30%);
+  }
 }
 a,
 span,

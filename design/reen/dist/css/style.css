@@ -468,6 +468,8 @@ a {
   color: #506a85;
   text-decoration: none;
   transition: color 0.2s; }
+  a:hover {
+    color: #171e25; }
 
 ul,
 ol {
@@ -626,7 +628,11 @@ option {
     background-color: #00bb9b;
     color: #fff;
     padding: 15px;
-    cursor: pointer; }
+    cursor: pointer;
+    text-transform: uppercase; }
+    .header__btn:hover {
+      transition: 0.2s;
+      background-color: #00a286; }
     @media (min-width: 576px) {
       .header__btn {
         margin-top: 60px;
