@@ -908,6 +908,35 @@ button {
       cursor: pointer; }
       .footer__newsletter-form button:hover {
         background-color: #008871; }
+  .footer__bottom {
+    background: #273545; }
+  @media (min-width: 768px) {
+    .footer__copyright {
+      float: left; } }
+  .footer__links {
+    margin-top: 5px; }
+    .footer__links li {
+      float: left;
+      margin-right: 4px; }
+      .footer__links li:last-child {
+        margin-right: 0; }
+      @media (min-width: 768px) {
+        .footer__links li {
+          margin-right: 10px; }
+          .footer__links li:last-child {
+            margin-right: 0; } }
+    .footer__links a:hover {
+      color: #859db6; }
+    @media (min-width: 768px) {
+      .footer__links {
+        margin-top: 0px;
+        float: right; } }
+  .footer__link-dot {
+    display: none; }
+    @media (min-width: 768px) {
+      .footer__link-dot {
+        display: inline;
+        margin-left: 10px; } }
 
 @media (min-width: 576px) {
   .is-collapsed-mobile {

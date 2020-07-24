@@ -122,4 +122,55 @@
       }
     }
   }
+
+  @include e(bottom) {
+    background: #273545;
+  }
+
+  @include e(copyright) {
+    @include mq(md) {
+      float: left;
+    }
+  }
+
+  @include e(links) {
+    margin-top: 5px;
+
+    li {
+      float: left;
+      margin-right: 4px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      @include mq(md) {
+        margin-right: 10px;
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+
+    a {
+      &:hover {
+        color: lighten($color: $color-link, $amount: 20%);
+      }
+    }
+
+    @include mq(md) {
+      margin-top: 0px;
+      float: right;
+    }
+  }
+
+  @include e(link-dot) {
+    display: none;
+
+    @include mq(md) {
+      display: inline;
+      margin-left: 10px;
+    }
+  }
 }
