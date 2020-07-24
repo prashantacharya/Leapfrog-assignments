@@ -23,3 +23,17 @@ $grid-type: 'float';
     float: left;
   }
 }
+
+.col-4 {
+  width: 100%;
+
+  @include mq(md) {
+    width: 50%;
+    float: left;
+  }
+
+  @include mq(lg) {
+    width: 25%;
+    float: left;
+  }
+}
