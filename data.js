@@ -158,6 +158,14 @@ const data = [
     liveDemo: 'design/reen/dist',
     type: 'sass',
   },
+  {
+    id: 21,
+    title: 'Todo List',
+    sourceCode:
+      'https://github.com/prashantacharya/Leapfrog-assignments/tree/master/react/todo-list',
+    liveDemo: 'react/todo-list/build',
+    type: 'react',
+  },
 ];
 
 // sass
