@@ -8,6 +8,8 @@ node_modules/
 bower_components/
 .sass-cache/
 
+build
+
 /.pnp
 .pnp.js
 

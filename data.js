@@ -161,9 +161,8 @@ const data = [
   {
     id: 21,
     title: 'Todo List',
-    sourceCode:
-      'https://github.com/prashantacharya/Leapfrog-assignments/tree/master/react/todo-list',
-    liveDemo: 'react/todo-list/build',
+    sourceCode: 'https://github.com/prashantacharya/react-todo',
+    liveDemo: 'https://prashantacharya.github.io/react-todo',
     type: 'react',
   },
 ];
