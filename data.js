@@ -165,6 +165,13 @@ const data = [
     liveDemo: 'https://prashantacharya.github.io/react-todo',
     type: 'react',
   },
+  {
+    id: 22,
+    title: 'Hackernews',
+    sourceCode: 'https://github.com/prashantacharya/hackernews',
+    liveDemo: 'https://prashantacharya.github.io/hackernews',
+    type: 'react',
+  },
 ];
 
 // sass
