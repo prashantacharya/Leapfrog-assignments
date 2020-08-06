@@ -172,6 +172,13 @@ const data = [
     liveDemo: 'https://prashantacharya.github.io/hackernews',
     type: 'react',
   },
+  {
+    id: 23,
+    title: 'GitHub UI',
+    sourceCode: 'https://github.com/prashantacharya/github-ui',
+    liveDemo: 'https://prashantacharya.github.io/github-ui/',
+    type: 'react',
+  },
 ];
 
 // sass
