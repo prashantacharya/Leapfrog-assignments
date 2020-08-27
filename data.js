@@ -193,6 +193,13 @@ const data = [
     liveDemo: 'https://prashantacharya.github.io/Leapfrog-assignments/#',
     type: 'node',
   },
+  {
+    id: 26,
+    title: 'Project Management System Frontend',
+    sourceCode: 'https://github.com/prashantacharya/Project-Management-System-Frontend',
+    liveDemo: 'https://prashantacharya.github.io/Leapfrog-assignments/#',
+    type: 'react',
+  },
 ];
 
 // sass
