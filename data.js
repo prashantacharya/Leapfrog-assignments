@@ -186,6 +186,13 @@ const data = [
     liveDemo: 'https://prashantacharya.github.io/Leapfrog-assignments/#',
     type: 'node',
   },
+  {
+    id: 25,
+    title: 'Project Management System API',
+    sourceCode: 'https://github.com/prashantacharya/Project-Management-System-API',
+    liveDemo: 'https://prashantacharya.github.io/Leapfrog-assignments/#',
+    type: 'node',
+  },
 ];
 
 // sass
